@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>KhataBook</title>
+  </head>
+  <body>
+    <div class="w-full h-screen bg-zinc-500 text-white">
+      <nav class="w-full flex justify-between p-3 px-10">
+        <h1 class="text-5xl uppercase font-bold">KhataBook</h1>
+        <div class="flex gap-3 p-3">
+          <a href="/">Home</a><a href="/create">Create New Hisaab</a>
+        </div>
+      </nav>
+
+      <div class="w-full h-60 mt-20 px-10">
+        <h1 class="mb-10 text-3xl font-bold">All Hisaab Kitaab</h1>
+        <% if (files.length === 0) { %>
+        <div class="text-center text-2xl text-gray-300">
+          No Hisaab have been created yet.
+        </div>
+        <% } else { %> <% files.forEach((file)=>{ %>
+        <div
+          class="flex gap-4 mb-3 h-20 w-[40%] bg-blue-500 items-center justify-between px-5 rounded-md"
+        >
+          <div class="flex gap-3 items-center">
+            <h1 class="text-2xl"><%= file.split(".")[0] %></h1>
+            <a href="/edit/<%= file %>"
+              ><i
+                class="w-8 h-8 text-blue-500 flex items-center justify-center bg-white rounded-full ri-arrow-right-line"
+              ></i
+            ></a>
+          </div>
+
+          <div class="flex items-center gap-10">
+            <a href="/edit/<%= file %>"
+              ><i class="text-white text-2xl ri-pencil-line"></i
+            ></a>
+            <a href="/delete/<%= file %>"
+              ><i
+                class="w-8 h-8 text-red-500 text-2xl flex items-center justify-center bg-white rounded-full ri-delete-bin-line"
+              ></i
+            ></a>
+          </div>
+        </div>
+
+        <% }) }%>
+      </div>
+    </div>
+  </body>
+</html>
